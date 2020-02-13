@@ -1,0 +1,66 @@
+{
+    "tools" : [
+        {
+            "id":1,
+            "toolname":"Cerberus",
+            "caract" :  {
+                "Web" : "Oui",
+                "API_Webservices" : "Oui",
+                "Mainframe" : "Oui",
+                "Desktop_app" : "Oui",
+                "Mobile_app" : "Oui",
+                "Base_de_donnée" : "Oui",
+                "Langage" : "Procédural",
+                "Niveau_de_programmation" : "Aucun",
+                "Type_de_test" : "Fonctionnel",
+                "Technique_de_test" : "TDD",
+                "Import_Export" : "Non",
+                "Documentation" : "Beaucoup de doc",
+                "Licence" : "Open source",
+                "Support" : "Git, Slack",
+                "Prix" : "12 euros"
+            }, 
+            "compatibilite" : {
+                "Jenkins" : "Oui",
+                "Gitlab" : "Non",
+                "Cucumber" : "Oui",
+                "JiraXray" : "Oui",
+                "Github" : "Oui"
+                
+            },
+            "url" : "https://cerberus-testing.com/",
+            "logo": "../assets/img/cerberus_logo.png"
+        },
+        {
+            "id":2,
+            "toolname":"Katalon",
+            "caract" :  {
+                "Web" : "Oui",
+                "API_Webservices" : "Oui",
+                "Mainframe" : "Oui",
+                "Desktop_app" : "Non",
+                "Mobile_app" : "Oui",
+                "Base_de_donnée" : "Oui",
+                "Langage" : "Java/Groovie",
+                "Niveau_de_programmation" : "Aucun",
+                "Type_de_test" : "Integration",
+                "Technique_de_test" : "TDD",
+                "Import_Export" : "Selenium",
+                "Documentation" : "Beaucoup de doc",
+                "Licence" : "Open source",
+                "Support" : "Git, Slack",
+                "Prix" : "12 euros"
+                
+            }, 
+            "compatibilite" : {
+                "Jenkins" : "Oui",
+                "Gitlab" : "Non",
+                "Cucumber" : "Oui",
+                "JiraXray" : "Oui",
+                "Github" : "Oui"
+            },
+            "url" : "www.test.com", 
+            "logo": ""
+        }
+    ]
+}
