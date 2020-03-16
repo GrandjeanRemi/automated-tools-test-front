@@ -1,41 +1,54 @@
 <template>
-  <div  class="container" >  
-    <div v-for="tool in tools" v-bind:key="tool.id">
-        <div v-if="id == tool.id">
-          <img width="200" height="200" :src=tool.logo>
+  <b-container class="container" >
+    <b-row class="justify-content-center" >
+      <b-col>
+        <div class="toolName" >
+            <h1 id="idtoolname" v-for="tool in tools" v-bind:key="tool.id">
+            <div v-if="id == tool.id">
+              <img width="100" height="100" v-bind:src=tool.logo />
+                {{tool.toolname}}
+            </div>
+            </h1>
         </div>
-      </div>
-     <div class="toolName" >
-      <center>
-      <h1 id="idtoolname" v-for="tool in tools" v-bind:key="tool.id">
-      <div v-if="id == tool.id">
-       {{tool.toolname}}
-      </div>
-      </h1>
-      </center>
-    </div>
-    <div class="toolspec">
-      <div class="columnleft">
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col xs="1">
+        <div class="arrowleft visible" @click='gotoleft'>
+          <vue-chevron
+            :point-down="pointDown"
+            :duration="duration"
+            :thickness="thickness"
+            :angle="angle"
+            :round-edges="roundEdges"
+          />
+        </div>
+      </b-col>
+      <b-col xl="4">
+        <div class="title">
+          <span class="draw"> CARACTERISTIQUES</span>
+        </div>
         <div class="toolCaract">
-          <h2><b><center>CARACTERISTIQUES</center></b></h2>
-              <div v-for="tool in tools" v-bind:key="tool.id">
-                  <div v-for="(value, key) in tool.caract" v-bind:key="key">   
-                    <div v-if="id == tool.id">
-                    <b>{{key}}</b> : {{value}} 
-                    </div>
-                  </div>
-                  <div v-if="id == tool.id">
-                    <div class="weblink">
-                      <a target="#blank" :href=tool.url>VOIR LE SITE</a>
-                    </div>
-                  </div>
+            <div class="content" v-for="tool in tools" v-bind:key="tool.id">
+              <div v-for="(value, key) in tool.caract" v-bind:key="key">   
+                <div v-if="id == tool.id">
+                  <b>{{replaceKey(key)}}</b> : {{value}} 
+                </div>
               </div>
-        </div>
-      </div>
-      <div class="columnright">   
+              <div v-if="id == tool.id">
+                <div class="weblink">
+                  <a target="#blank" :href=tool.url>VOIR LE SITE</a>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </b-col> 
+        <b-col xl="4">
+          <div class="title">
+            COMPATIBILITE
+          </div>
         <div class="compatibilite">
-            <p><b>COMPATIBILITE</b></p>
-            <div v-for="tool in tools" v-bind:key="tool.id">
+            <div class="content" v-for="tool in tools" v-bind:key="tool.id">
                 <div v-for="(value, key) in tool.compatibilite" v-bind:key="key">   
                   <div v-if="id == tool.id">
                     <div class="compatibilitetools" v-if="key === 'Gitlab'">
@@ -68,13 +81,22 @@
                     <div class="compatibilitetools" v-if="key === 'Github'">
                       <img class="compatibilitetoolsimg"  src="../assets/img/github.png"/>
                       <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
-                        <img width="50" height="50" src="../assets/img/tick.png"/> 
+                       <img width="50" height="50" src="../assets/img/tick.png"/> 
                       </div>
                       <div class="compatibilitetoolsvalue" v-if="value === 'Non'">
-                        <img width="43" height="43" src="../assets/img/quit.png"/> 
+                       <img width="43" height="43" src="../assets/img/quit.png"/> 
                       </div>                      
                     </div>
-                    <div class="compatibilitetools" v-if="key === 'JiraXray'">
+                    <div class="compatibilitetools" v-if="key === 'Jira'">
+                        <img class="compatibilitetoolsimg"  src="../assets/img/jira.png"/>
+                        <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
+                          <img width="50" height="50" src="../assets/img/tick.png"/> 
+                        </div>
+                        <div class="compatibilitetoolsvalue" v-if="value === 'Non'">
+                          <img width="43" height="43" src="../assets/img/quit.png"/> 
+                        </div>   
+                    </div>
+                    <div class="compatibilitetools" v-if="key === 'Xray'">
                       <img class="compatibilitetoolsimg"  src="../assets/img/xraylogo.png"/>
                       <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
                         <img width="50" height="50" src="../assets/img/tick.png"/> 
@@ -87,32 +109,49 @@
                 </div>
             </div>
         </div>
+      </b-col>
+      <b-col xs="1">
+        <div class="arrowright visible" @click='gotoright'>
+          <vue-chevron
+            :point-down="pointDown"
+            :duration="duration"
+            :thickness="thickness"
+            :angle="angle"
+            :round-edges="roundEdges"
+          />
+        </div>
+      </b-col>
+      </b-row> 
+      <div class="fleches">
+        <b-row class="justify-content-center">
+          <div class="arrowleft gauche" @click='gotoleft'>
+            <vue-chevron
+              :point-down="pointDown"
+              :duration="duration"
+              :thickness="thickness"
+              :angle="angle"
+              :round-edges="roundEdges"
+            />
+          </div>
+          <div class="arrowright droite" @click='gotoright'>
+            <vue-chevron
+              :point-down="pointDown"
+              :duration="duration"
+              :thickness="thickness"
+              :angle="angle"
+              :round-edges="roundEdges"
+            />
+          </div>
+        </b-row>
       </div>
-    </div>
-      <div class="arrowright" @click='gotoright'>
-        <vue-chevron
-          :point-down="pointDown"
-          :duration="duration"
-          :thickness="thickness"
-          :angle="angle"
-          :round-edges="roundEdges"
-        />
-      </div>
-      <div class="arrowleft" @click='gotoleft'>
-        <vue-chevron
-          :point-down="pointDown"
-          :duration="duration"
-          :thickness="thickness"
-          :angle="angle"
-          :round-edges="roundEdges"
-        />
-      </div>   
-  </div>
+    
+  </b-container>
 </template>
 
 <script>
 import Tools from '../assets/tools.json'
-import VueChevron from 'vue-chevron';
+import VueChevron from 'vue-chevron'
+import firebase from '../Firebase.js'
 
 export default {
   components: {
@@ -120,8 +159,9 @@ export default {
   },
   data () {
     return {
-      id: 1,
-      tools: Tools.tools,
+      ref: firebase.firestore().collection('tools'),
+      id: this.$route.params.id,  
+      tools : [],
       pointDown: false,
       thickness: 10,
       duration: 300,
@@ -130,25 +170,51 @@ export default {
       easing: function n(t){return t}
     }
   },
+  created () {
+    this.ref.onSnapshot((querySnapshot) => {
+      this.tools = [];
+      querySnapshot.forEach((doc) => {
+        this.tools.push({
+          id: doc.data().id,
+          toolname: doc.data().toolname,
+          url: doc.data().url,
+          logo: doc.data().logo,
+          description: doc.data().description,
+          caract: doc.data().caract,
+          compatibilite: doc.data().compatibilite
+        });
+      });
+    });
+  },
   methods: {
     gotoright () {
       if(this.id <= this.tools.length-1) {
-        this.$router.push({ name: 'Catalogue', params: { id: this.id + 1 } })
+        this.$router.push({ name: 'Catalogue', params: { id: parseInt(this.id) + 1 } })
         this.id = this.$route.params.id      
       }else{
         this.id = 1
-        this.$router.push({ name: 'Catalogue', params: { id: this.id } })
+        this.$router.push({ name: 'Catalogue', params: { id: parseInt(this.id) } })
       }
     },
     gotoleft () {
       if(this.id > 1) {  
-        this.$router.push({ name: 'Catalogue', params: { id: this.id - 1 } })
+        this.$router.push({ name: 'Catalogue', params: { id: parseInt(this.id) - 1 } })
         this.id = this.$route.params.id
-     }     
+     }else{
+       this.id = this.tools.length
+       this.$router.push({ name: 'Catalogue', params: { id: parseInt(this.id) } })
+     }
+    },
+    replaceKey(key){
+       return key.replace(/_/g,' ');
     }
   },
   computed: {},
   mounted () {
+    if(this.id > this.tools.length ||  /[^0-9]/.test(this.id)) {      
+      this.id = 1
+      this.$router.push({ name: 'Catalogue', params: { id: parseInt(this.id) } })
+    }
   }
 }
 
@@ -159,7 +225,7 @@ export default {
 
 h1 {
   font-weight: bold;
-  font-size:100px;
+  font-size:7vw;
 }
 ul {
   list-style-type: none;
@@ -177,55 +243,69 @@ hr{
   height: 1px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
-.toolspec{
-  color:#7b7992;
+
+.toolName{
+  margin-bottom:5%;
+  margin-top:1%;
 }
-.columnleft{
-  position:relative;
-  float:left;
-  margin-left:25%;
-}
-.columnright{
-  position:relative;
-  float:right;
-  margin-right:25%;
-  
-}
+
 .toolCaract{
-  float:left;
+  color:#7b7992;
   background: #fff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-  padding: 25px;
   border-radius: 25px;
-  height:600px;
   line-height:28px;
   text-align:left;
+  height:650px;
+  margin-bottom:5%;
+  padding-bottom:25px;
+  padding-right:25px;
+  padding-left:25px;
+  padding-bottom:25px;
+  margin-bottom:20px;
+  padding-top:5%;
 }
 
 .compatibilite{
-  float:right;
+  color:#7b7992;
+  height:650px;
   text-align:center;
-  font-size:25px;
   background: #fff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-  padding: 25px;
   border-radius: 25px;
-  width:250px;
-  height:600px;
+  padding-right:25px;
+  padding-left:25px;
+  padding-bottom:25px;
+  margin-bottom:20px;
+  padding-top:5%;
 }
 .compatibilitetools .compatibilitetoolsimg{
   float:left;
-  width:45%;
+  width:35%;
   margin: auto;
 }
 .compatibilitetools .compatibilitetoolsvalue{
-  margin-left:60%;
+  margin-left:50%;
   margin: auto;
 }
 .compatibilitetools{
   display:flex;
 }
-.arrowright {
+.title{
+  background: none;
+  box-sizing: border-box;
+  padding-top: 0.8em;
+  border-radius: 25px;
+  box-shadow: inset 0 0 0 1px #f45e61;
+  color: white;
+  font-size: 20px;
+  height:60px;
+  text-align:center;
+  background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
+  box-shadow: 0px 14px 80px rgba(252, 56, 56, 0.4);
+  margin-bottom:20px;
+}
+.arrowright.visible {
   color: #000000;
   font-size: 150px;
   position:absolute;
@@ -242,7 +322,7 @@ hr{
   transform: scale(1.1) rotate(90deg);
 }
 
-.arrowleft{
+.arrowleft.visible{
   color: #000000;
   font-size: 150px;
   position:absolute;
@@ -265,12 +345,39 @@ hr{
   justify-content: center;
   text-align: center;
   cursor:pointer;
-  margin-top:15%;
+  margin-top:8%;
 }
 .weblink a {
   color:white;
   text-decoration: none;
   font-weight: 500;
   letter-spacing: 1px;
+}
+@media screen and (max-width: 1200px) {
+  .fleches {
+    position:relative;
+    color: #000000;
+    font-size: 150px;
+  }
+  .arrowleft.gauche{ 
+    transform: rotate(-90deg);
+    width:1em;
+    height:1em;
+    transition-duration: .3s;
+  }
+    .arrowright.droite{ 
+    transform: rotate(90deg);
+    width:1em;
+    height:1em;
+    transition-duration: .3s;
+  }
+  .visible{
+    display: none;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .fleches {
+    display:none;
+  }
 }
 </style>

@@ -1,0 +1,50 @@
+{
+    "questions" : [
+        {
+            "id":1,
+            "titre" : "Je veux automatiser mes tests pour ... ",
+            "reponse1" : "Une application Web",
+            "reponse2" : "Une application Mobile",
+            "reponse3" : "Un client lourd",
+            "reponse4" : "Des API/Webservices",
+            "reponse5" : "Tout type d'application"
+        },
+        {
+            "id":2,
+            "titre" : "Je veux installer mon outil sur",
+            "reponse1" : "Un serveur à distance",
+            "reponse2" : "En local sur mon poste",
+            "reponse3" : "",
+            "reponse4" : "",
+            "reponse5" : ""
+        },
+        {
+            "id":3,
+            "titre" : "Mon outil doit être compatible avec...",
+            "reponse1" : "Jenkins",
+            "reponse2" : "Gitlab",
+            "reponse3" : "Jira",
+            "reponse4" : "Une base de donnée",
+            "reponse5" : ""
+        },
+        {
+            "id":4,
+            "titre" : "Mon niveau de compétence en dévelopement",
+            "reponse1" : "Je n'y connais rien",
+            "reponse2" : "J'ai des bases ",
+            "reponse3" : "J'ai un bon niveau",
+            "reponse4" : "Je suis une bête ",
+            "reponse5" : ""
+        },
+        {
+            "id":5,
+            "titre" : "Je veux un outil gratuit",
+            "reponse1" : "Oui",
+            "reponse2" : "Non",
+            "reponse3" : "",
+            "reponse4" : "",
+            "reponse5" : ""
+        }
+        
+    ]
+}

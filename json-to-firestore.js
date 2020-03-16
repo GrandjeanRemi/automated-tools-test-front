@@ -1,5 +1,18 @@
-{
-    "tools" : [
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+
+// Initialize Cloud Firestore through Firebase
+firebase.initializeApp({
+    apiKey: "AIzaSyCR_1v95wQ17VFs-VQiQP6M9yINiymHurs",
+    authDomain: "cataloguetestauto.firebaseapp.com",
+    projectId: "cataloguetestauto"
+  });
+  
+var db = firebase.firestore();
+
+var menu = 
+ [
         {
             "id":1,
             "toolname":"Cerberus",
@@ -297,5 +310,39 @@
             "logo": "https://www.anyware.co.il/Uploads/2017/11/smartbear_testcomplete_boxshot.png",
             "description":"User-friendly automated testing framework"
         }
-    ]
-}
+ ]
+	
+menu.forEach(function(obj) {
+    db.collection("menu").add({
+        id: obj.id,
+        toolname: obj.toolname,
+        description: obj.description,
+        url: obj.url,
+        logo: obj.logo
+		caract.Type: obj.caract.type
+		caract.Web_app: obj.caract.Web_app
+		caract.API_Webservices: obj.caract.API_Webservices
+		caract.Desktop_app: obj.caract.Desktop_app
+		caract.Mobile_app: obj.caract.Mobile_app
+		caract.Base_de_donnée: obj.caract.Base_de_donnée
+		caract.Langage: obj.caract.Langage
+		caract.Niveau_de_programmation: obj.caract.Niveau_de_programmation
+		caract.Type_de_test: obj.caract.Type_de_test
+		caract.Technique_de_test: obj.caract.Technique_de_test
+		caract.Import_Export: obj.caract.Import_Export
+		caract.Documentation: obj.caract.Documentation
+		caract.Licence: obj.caract.Licence
+		caract.Support: obj.caract.Support
+		compatibilite.Jenkins: obj.compatibilite.Jenkins
+		compatibilite.Gitlab: obj.compatibilite.Gitlab
+		compatibilite.Cucumber: obj.compatibilite.Cucumber
+		compatibilite.Jira: obj.compatibilite.Jira
+		compatibilite.Xray: obj.compatibilite.Xray
+		compatibilite.Github: obj.compatibilite.Github
+    }).then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});

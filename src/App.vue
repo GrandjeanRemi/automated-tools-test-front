@@ -1,15 +1,30 @@
 <template>
   <div id="app">
+      <div class="navbar">
+        <b-nav>
+          <b-nav-item href="/">Catalogue</b-nav-item>
+          <b-nav-item href="/questionnaire">Choisir mon outil</b-nav-item>
+          <b-nav-item>Contact</b-nav-item>  
+        </b-nav>
+      </div>
     <router-view/>
   </div>
 </template>
 
 <script>
-import Catalogue from './components/Catalogue';
+import Catalogue from './components/Catalogue'
+import Quizz from './components/Quizz'
+import CatalogueList from './components/CatalogueList'
+
 export default {
   name: 'App',
   components : {
-    Catalogue
+    Catalogue,
+    Quizz,
+    CatalogueList
+  },
+  methods : {
+
   }
 }
 </script>
@@ -24,7 +39,15 @@ export default {
   margin-top: 60px;
 }
 body{
-background-color: #FFE53B;
-background-image: linear-gradient(147deg, #FFE53B 0%, #fd3838 74%);
+background-color: white;
+margin:0;
+}
+.navbar{
+  box-shadow: 0px 30px 80px rgba(34, 35, 58, 0.2);  
+  background-image: linear-gradient(147deg, #fdfbfb    0%, #ebedee 74%);
+  top:0;
+  position:fixed;
+  z-index:9999;
+  width:100%;
 }
 </style>

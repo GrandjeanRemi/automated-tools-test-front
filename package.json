@@ -14,9 +14,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "firebase": "^7.10.0",
     "vue": "^2.6.11",
     "vue-chevron": "^0.1.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuefire": "^2.2.0-alpha.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -33,8 +35,8 @@
     "babel-preset-env": "^1.3.2",
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
-    "bootstrap": "^4.0.0-beta",
-    "bootstrap-vue": "^2.4.0",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.4.1",
     "chalk": "^2.0.1",
     "chromedriver": "^2.27.2",
     "copy-webpack-plugin": "^4.0.1",
