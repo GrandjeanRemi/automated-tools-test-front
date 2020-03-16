@@ -71,47 +71,6 @@ export default {
   data () {
     return {
         ref: firebase.firestore().collection('tools'),
-        id: 1,
-        tools : [],
-        tmpTools : [],
-        selected: null,
-        selected2: null,
-        selected3: null,
-        selected4: null,
-        selected5: null,
-        text: '',
-        options: [
-          { value: null, text: "Tous" },
-          { value: 'Client web', text: 'Client Web' },
-          { value: 'Client lourd', text: 'Client lourd' }
-        ],
-        options2: [
-          { value: null, text: "Tous" },
-          { value: 'Application Web', text: 'Application Web' },
-          { value: 'Application Mobile', text: 'Application Mobile' },
-          { value: 'Client Lourd', text: 'Client Lourd' },
-          { value: 'API/Webservices', text: 'API/Webservices' },
-          { value: 'Base de donnée', text: 'Base de donnée'}
-        ],
-        options3: [
-          { value: null, text: 'Tous' },
-          { value: 'Jenkins', text: 'Jenkins' },
-          { value: 'Gitlab', text: 'Gitlab' },
-          { value: 'Github', text: 'Github' },
-          { value: 'Jira', text: 'Jira' },
-          { value: 'Xray', text: 'Xray' }
-        ],
-        options4: [
-          { value: null, text: 'Peu importe' },
-          { value: 'Débutant', text: 'Débutant' },
-          { value: 'Moyen', text: 'Moyen' },
-          { value: 'Expert', text: 'Expert' }
-        ],
-        options5: [
-          { value: null, text: 'Peu importe' },
-          { value: 'Gratuit', text: 'Oui' },
-          { value: 'Payant', text: 'Non' }
-        ],
     }
   },
   created () {
