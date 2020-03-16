@@ -24,16 +24,16 @@
             "reponse1" : "Jenkins",
             "reponse2" : "Gitlab",
             "reponse3" : "Jira",
-            "reponse4" : "Une base de donnée",
-            "reponse5" : ""
+            "reponse4" : "Xray",
+            "reponse5" : "Cucumber"
         },
         {
             "id":4,
             "titre" : "Mon niveau de compétence en dévelopement",
             "reponse1" : "Je n'y connais rien",
-            "reponse2" : "J'ai des bases ",
+            "reponse2" : "J'ai des bases",
             "reponse3" : "J'ai un bon niveau",
-            "reponse4" : "Je suis une bête ",
+            "reponse4" : "",
             "reponse5" : ""
         },
         {

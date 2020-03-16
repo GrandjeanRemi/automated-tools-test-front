@@ -31,18 +31,42 @@
                 <b-button :disabled=isDisabled class="bouton" @click='calculerResultat' >VOIR LES OUTILS</b-button>
             </div>
         </b-row>
+        <b-row>
+            <div v-for="tool in this.tools" v-bind:key="tool.id"> 
+                <b-col>
+                    <b-card
+                        title=" "
+                        :img-src=tool.logo
+                        :img-alt=tool.toolname
+                        img-top
+                        tag="card"
+                        style="max-width: 20rem;border-radius: 25px;padding-top:15%;box-shadow: 0px 5px 20px rgba(34, 35, 58, 0.2);height:400px;margin-left:2%;margin-bottom:3%;margin-top:5%;border-radius: 25px;"
+                        class="mb-2"
+                    >
+                    <div class="enbas">
+                        <h2>{{tool.toolname}}</h2>
+                        <b-card-text>
+                            {{tool.description}}
+                        </b-card-text>
+                        <b-button class="lienbouton" :href="'/catalogue/'+tool.id" >En savoir plus</b-button>
+                    </div>
+                    </b-card>
+                </b-col>
+            </div>
+        </b-row>
     </b-container>
 </div>
 </template>
 
 <script>
-import Tools from '../assets/tools.json'
 import Quiz from '../assets/quiz.json'
-
+import firebase from '../Firebase.js'
 export default {
     data () {
         return {
+            ref: firebase.firestore().collection('tools'),
             id: 1,
+            tools : [],
             cpt:0,
             questions: Quiz.questions,
             selected: '',
@@ -52,7 +76,22 @@ export default {
             value : 20
         }
   },
-  props: ['tools'],
+  created () {
+    this.ref.onSnapshot((querySnapshot) => {
+      this.tools = [];
+      querySnapshot.forEach((doc) => {
+        this.tools.push({
+          id: doc.data().id,
+          toolname: doc.data().toolname,
+          url: doc.data().url,
+          logo: doc.data().logo,
+          description: doc.data().description,
+          caract: doc.data().caract,
+          compatibilite: doc.data().compatibilite
+        });
+      });
+    });
+  },
   methods: {
       questionSuivante () {
         if(this.reponse.length == 0){
@@ -71,15 +110,113 @@ export default {
   
          console.log(this.reponse)  
       },
-      calculerResultat () {
-          for(var i=0; i<this.tools.length; i++){
-              if(this.tools[i].caract.Web_app == "Non" && this.reponse[0] == this.questions[0].reponse1){
-                  delete this.tools[i] 
-              }
-          }
-          this.$emit('return-tools', this.tools)
-        
-      }
+        calculerResultat(){
+            var filtercondition = [
+                this.reponse[0],
+                this.reponse[1],
+                this.reponse[2],
+                this.reponse[3],
+                this.reponse[4],
+            ]
+            this.tools = this.tools.filter(function(obj) {
+                  if(filtercondition[0] != null){
+                    if(filtercondition[0] == "Une application Web"){
+                        if("Oui" != obj.caract.Web_app){
+                            return false;
+                        }
+                    }
+                    if(filtercondition[0] == "Des API/Webservices"){
+                        if("Oui" != obj.caract.API_Webservices){
+                            return false;
+                        }
+                    }
+                    if(filtercondition[0] == "Un client lourd"){
+                        if("Oui" != obj.caract.Desktop_app){
+                            return false;
+                        }
+                    }
+                    if(filtercondition[0] == "Une application Mobile"){
+                        if("Oui" != obj.caract.Mobile_app){
+                            return false;
+                        }
+                    }
+                  }
+                  if(filtercondition[1] != null){
+                      if(filtercondition[1] == "Un serveur à distance"){
+                        if("Client web" != obj.caract.Type ){
+                            return false;
+                        }
+                    }
+                    if(filtercondition[1] == "En local sur mon poste"){
+                        if("Client lourd" != obj.caract.Type ){
+                             return false;
+                        }
+                    }
+                  }
+                  if(filtercondition[2] != null){
+                    if(filtercondition[2] == "Jenkins"){
+                        if("Oui" != obj.compatibilite.Jenkins){
+                            return false;
+                        }
+                    }
+                    if(filtercondition[2] == "Gitlab"){
+                        if("Oui" != obj.compatibilite.Gitlab){
+                            return false;
+                        }
+                    }
+                    if(filtercondition[2] == "Cucumber"){
+                        if("Oui" != obj.compatibilite.Cucumber){
+                            return false;
+                        }
+                    }
+                    if(filtercondition[2] == "Jira"){
+                        if("Oui" != obj.compatibilite.Jira){
+                            return false;
+                        }
+                    }
+                    if(filtercondition[2] == "Xray"){
+                        if("Oui" != obj.compatibilite.Xray){
+                            return false;
+                        }
+                    }
+                  }
+                  if(filtercondition[3] != null){                       
+                        if(filtercondition[3] != "Je n'y connais rien"){
+                            if("Débutant" != obj.caract.Niveau_de_programmation){
+                                console.log("toto0")
+                                return false;
+                            }
+                        }
+                        if(filtercondition[3] != "J'ai des bases"){
+                            if("Moyen" != obj.caract.Niveau_de_programmation){
+                                console.log("toto1")
+                                return false;
+                            }
+                        }
+                        if(filtercondition[3] != "J'ai un bon niveau"){ 
+                            if("Expert" != obj.caract.Niveau_de_programmation){
+                                console.log("toto2")
+                                return false;
+                            }
+                        }
+                  }
+                  if(filtercondition[4] != null){
+                    if(filtercondition[4] != "Oui"){
+                        if("Gratuit" != obj.caract.Prix){
+                                return false;
+                        }
+                    }
+                    if(filtercondition[4    ] != "Non"){
+                        if("Payant" != obj.caract.Prix){
+                                return false;
+                        }
+                    }
+                  }
+                  
+                return true;
+            });
+            console.log(this.tools)
+        }
   },
   computed: {
       isDisabled(){
@@ -120,6 +257,30 @@ export default {
 }
 .mt-2{
     margin-bottom:2%;
+}
+img{
+    width:40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.lienbouton{
+  background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
+  padding: 15px 35px;
+  box-shadow: 0px 14px 80px rgba(252, 56, 56, 0.4);
+  text-align: center;
+  cursor:pointer;
+  border:none;
+  margin: auto;
+}
+.enbas{
+    margin: auto;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+}
+.card-title{
+    flex-grow:1;
 }
 
 
