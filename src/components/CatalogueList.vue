@@ -62,7 +62,8 @@
 import Tools from '../assets/tools.json'
 import Quizz from './Quizz'
 import firebase from '../Firebase.js'
-
+let test = firebase.firestore().collection('tools');
+console.log('TEST', test)
 
 export default {
   components : {

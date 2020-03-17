@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import CatalogueList from '@/components/CatalogueList'
 import Catalogue from '@/components/Catalogue'
 import Quizz from '@/components/Quizz'
+import Administratouille from '@/components/Administratouille'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/questionnaire',
       name: 'Questionnaire',
       component: Quizz
+    },
+    {
+      path: '/administratouille',
+      name: 'Administratouille',
+      component: Administratouille
     }
   ]
 })

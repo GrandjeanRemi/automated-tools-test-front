@@ -15,13 +15,15 @@
 import Catalogue from './components/Catalogue'
 import Quizz from './components/Quizz'
 import CatalogueList from './components/CatalogueList'
+import Administratouille from './components/Administratouille';
 
 export default {
   name: 'App',
   components : {
     Catalogue,
     Quizz,
-    CatalogueList
+    CatalogueList,
+    Administratouille
   },
   methods : {
 
