@@ -11,9 +11,9 @@
         },
         {
             "id":2,
-            "titre" : "Je veux installer mon outil sur",
-            "reponse1" : "Un serveur à distance",
-            "reponse2" : "En local sur mon poste",
+            "titre" : "Je veux accéder à mon outil depuis",
+            "reponse1" : "Une page web (multi-utilisateurs)",
+            "reponse2" : "Depuis mon poste (mono-utilisateur)",
             "reponse3" : "",
             "reponse4" : "",
             "reponse5" : ""
@@ -30,17 +30,17 @@
         {
             "id":4,
             "titre" : "Mon niveau de compétence en dévelopement",
-            "reponse1" : "Je n'y connais rien",
-            "reponse2" : "J'ai des bases",
-            "reponse3" : "J'ai un bon niveau",
+            "reponse1" : "Débutant",
+            "reponse2" : "Moyen",
+            "reponse3" : "Expert",
             "reponse4" : "",
             "reponse5" : ""
         },
         {
             "id":5,
-            "titre" : "Je veux un outil gratuit",
-            "reponse1" : "Oui",
-            "reponse2" : "Non",
+            "titre" : "Je veux un outil : ",
+            "reponse1" : "Gratuit",
+            "reponse2" : "Payant",
             "reponse3" : "",
             "reponse4" : "",
             "reponse5" : ""

@@ -28,11 +28,11 @@
         <b-row class="justify-content-md-center">
             <div id="buttons">
                 <b-button id="boutonSuivant" class="bouton" @click='questionSuivante' >SUIVANT</b-button>
-                <b-button :disabled=isDisabled class="bouton" @click='calculerResultat' >VOIR LES OUTILS</b-button>
+                <b-button id="boutonVoir" :disabled=isDisabled class="bouton" @click='calculerResultat' >VOIR LES OUTILS</b-button>
             </div>
         </b-row>
-        <b-row>
-            <div v-for="tool in this.tools" v-bind:key="tool.id"> 
+        <b-row class="justify-content-md-center">
+            <div id="liste" class="listeoutils" v-for="tool in this.tools" v-bind:key="tool.id"> 
                 <b-col>
                     <b-card
                         title=" "
@@ -140,20 +140,20 @@ export default {
                             return false;
                         }
                     }
-                  }
-                  if(filtercondition[1] != null){
-                      if(filtercondition[1] == "Un serveur à distance"){
+                }
+                if(filtercondition[1] != null){                  
+                    if(filtercondition[1] == "Une page web (multi-utilisateurs)"){
                         if("Client web" != obj.caract.Type ){
                             return false;
                         }
                     }
-                    if(filtercondition[1] == "En local sur mon poste"){
+                    if(filtercondition[1] == "Depuis mon poste (mono-utilisateur)"){
                         if("Client lourd" != obj.caract.Type ){
-                             return false;
+                                return false;
                         }
                     }
-                  }
-                  if(filtercondition[2] != null){
+                }
+                if(filtercondition[2] != null){
                     if(filtercondition[2] == "Jenkins"){
                         if("Oui" != obj.compatibilite.Jenkins){
                             return false;
@@ -179,43 +179,21 @@ export default {
                             return false;
                         }
                     }
-                  }
-                  if(filtercondition[3] != null){                       
-                        if(filtercondition[3] != "Je n'y connais rien"){
-                            if("Débutant" != obj.caract.Niveau_de_programmation){
-                                console.log("toto0")
-                                return false;
-                            }
-                        }
-                        if(filtercondition[3] != "J'ai des bases"){
-                            if("Moyen" != obj.caract.Niveau_de_programmation){
-                                console.log("toto1")
-                                return false;
-                            }
-                        }
-                        if(filtercondition[3] != "J'ai un bon niveau"){ 
-                            if("Expert" != obj.caract.Niveau_de_programmation){
-                                console.log("toto2")
-                                return false;
-                            }
-                        }
-                  }
-                  if(filtercondition[4] != null){
-                    if(filtercondition[4] != "Oui"){
-                        if("Gratuit" != obj.caract.Prix){
-                                return false;
-                        }
-                    }
-                    if(filtercondition[4    ] != "Non"){
-                        if("Payant" != obj.caract.Prix){
-                                return false;
-                        }
+                }
+                if(filtercondition[3] != null){
+                    if(filtercondition[3] != obj.caract.Niveau_de_programmation){
+                        return false;
                     }
                   }
-                  
+                 if(filtercondition[4] != null){
+                    if(filtercondition[4] != obj.caract.Prix){
+                        return false;
+                    }
+                  }
                 return true;
             });
-            console.log(this.tools)
+            document.getElementById('liste').style.display = "inherit"
+            document.getElementById('boutonVoir').style.display = "none"
         }
   },
   computed: {
@@ -281,6 +259,9 @@ img{
 }
 .card-title{
     flex-grow:1;
+}
+.listeoutils{
+    display:none;
 }
 
 
