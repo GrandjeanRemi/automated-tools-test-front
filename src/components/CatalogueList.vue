@@ -33,7 +33,7 @@
         <b-icon-arrow-repeat class="h1 mb-2 reset" @click="resetFiltre">></b-icon-arrow-repeat>
     </b-row>
     <b-row class="justify-content-center listtools">
-        <div  v-for="tool in this.tools" v-bind:key="tool.id"> 
+        <div v-for="tool in this.tools" v-bind:key="tool.id"> 
             <b-col>
                 <b-card
                     title=" "

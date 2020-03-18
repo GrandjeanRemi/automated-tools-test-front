@@ -6,7 +6,7 @@
             <h1 id="idtoolname" v-for="tool in tools" v-bind:key="tool.id">
             <div v-if="id == tool.id">
               <img width="100" height="100" v-bind:src=tool.logo />
-                {{tool.toolname}}
+              {{tool.toolname}}
             </div>
             </h1>
         </div>
@@ -225,7 +225,7 @@ export default {
 
 h1 {
   font-weight: bold;
-  font-size:7vw;
+  font-size:6vw;
 }
 ul {
   list-style-type: none;
@@ -380,4 +380,5 @@ hr{
     display:none;
   }
 }
+
 </style>
