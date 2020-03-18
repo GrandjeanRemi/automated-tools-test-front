@@ -2,6 +2,8 @@
 <div>
     <b-container class="container" >
         <b-progress :value="value" variant="warning" :striped="striped" class="mt-2"></b-progress>
+        <p id="aucun" class="aucun">Malheureusement, aucun outil ne correspond à votre besoin</p>
+        <h1 id="mesoutils" class="mesoutils">Mes outils : </h1>
         <b-row class="justify-content-md-center">
             <div class="choix" id="questionnaire"  v-for="question in questions" v-bind:key="question.id">
                 <div v-if="id == question.id">
@@ -192,8 +194,14 @@ export default {
                   }
                 return true;
             });
-            document.getElementById('liste').style.display = "inherit"
             document.getElementById('boutonVoir').style.display = "none"
+            document.getElementsByClassName('choix')[document.getElementsByClassName('choix').length-1].style.display = "none";
+            if(this.tools.length == 0){
+                document.getElementById('aucun').style.display = "inherit"
+            }else{
+                document.getElementById('liste').style.display = "inherit"
+                document.getElementById('mesoutils').style.display = "inherit"
+            }
         }
   },
   computed: {
@@ -262,6 +270,12 @@ img{
 }
 .listeoutils{
     display:none;
+}
+.aucun{
+    display : none;
+}
+.mesoutils{
+    display: none;
 }
 
 
