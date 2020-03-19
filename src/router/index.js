@@ -21,7 +21,7 @@ export default new Router({
       component: Catalogue
     },
     {
-      path: '/catalogue', 
+      path: '/catalogue',
       redirect: '/catalogue/1'
     },
     {
