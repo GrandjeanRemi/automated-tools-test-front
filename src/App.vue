@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-      <div class="navbar">
-        <b-nav>
-          <b-nav-item href="/">Catalogue</b-nav-item>
-          <b-nav-item href="/questionnaire">Choisir mon outil</b-nav-item>
-          <b-nav-item>Contact</b-nav-item>  
-        </b-nav>
-      </div>
-    <router-view/>
+    <div class="navbar">
+      <b-nav>
+        <b-nav-item href="/">Catalogue</b-nav-item>
+        <b-nav-item href="/questionnaire">Choisir mon outil</b-nav-item>
+        <b-nav-item>Contact</b-nav-item>
+      </b-nav>
+    </div>
+    <router-view />
   </div>
 </template>
 
@@ -15,41 +15,39 @@
 import Catalogue from './components/Catalogue'
 import Quizz from './components/Quizz'
 import CatalogueList from './components/CatalogueList'
-import Administratouille from './components/Administratouille';
+import Administratouille from './components/Administratouille'
 
 export default {
   name: 'App',
-  components : {
+  components: {
     Catalogue,
     Quizz,
     CatalogueList,
     Administratouille
   },
-  methods : {
-
-  }
+  methods: {}
 }
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Questrial&display=swap");
 #app {
-  font-family: 'Questrial', sans-serif;
+  font-family: "Questrial", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
-body{
-background-color: white;
-margin:0;
+body {
+  background-color: white;
+  margin: 0;
 }
-.navbar{
-  box-shadow: 0px 30px 80px rgba(34, 35, 58, 0.2);  
-  background-image: linear-gradient(147deg, #fdfbfb    0%, #ebedee 74%);
-  top:0;
-  position:fixed;
-  z-index:9999;
-  width:100%;
+.navbar {
+  box-shadow: 0px 30px 80px rgba(34, 35, 58, 0.2);
+  background-image: linear-gradient(147deg, #fdfbfb 0%, #ebedee 74%);
+  top: 0;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
 }
 </style>
