@@ -147,7 +147,8 @@
     
   </b-container>
 </template>
-
+ 
+ 
 <script>
 import Tools from '../assets/tools.json'
 import VueChevron from 'vue-chevron'
