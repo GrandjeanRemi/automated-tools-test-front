@@ -35,8 +35,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #fe8a39;
 }
 body {
   background-color: white;
@@ -49,5 +48,11 @@ body {
   position: fixed;
   z-index: 9999;
   width: 100%;
+}
+a {
+  color : #fe8a39 !important;
+}
+a:hover {
+  color : #fd3838 !important;
 }
 </style>

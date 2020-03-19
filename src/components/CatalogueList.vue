@@ -265,7 +265,7 @@ img {
 .filter {
   margin-right: 10px;
   margin-left: 10px;
-  margin-top: 5%;
+  margin-top: 1%;
 }
 .titrefiltre {
   float: left;
