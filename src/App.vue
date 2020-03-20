@@ -15,7 +15,14 @@
 import Catalogue from './components/Catalogue'
 import Quizz from './components/Quizz'
 import CatalogueList from './components/CatalogueList'
+<<<<<<< Updated upstream
 import Administratouille from './components/Administratouille'
+=======
+import Administratouille from './components/Administratouille';
+import ToolList from './components/ToolList';
+import AddTool from './components/AddTool';
+import ToolDetail from './components/ToolDetail';
+>>>>>>> Stashed changes
 
 export default {
   name: 'App',
@@ -23,7 +30,10 @@ export default {
     Catalogue,
     Quizz,
     CatalogueList,
-    Administratouille
+    Administratouille,
+    ToolList,
+    AddTool,
+    ToolDetail
   },
   methods: {}
 }
