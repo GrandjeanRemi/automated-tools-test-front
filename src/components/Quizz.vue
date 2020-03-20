@@ -108,6 +108,7 @@
   </div>
 </template>
 
+
 <script>
 import Quiz from '../assets/quiz.json'
 import firebase from '../Firebase.js'
