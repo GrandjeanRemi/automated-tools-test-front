@@ -4,6 +4,8 @@ import CatalogueList from '@/components/CatalogueList'
 import Catalogue from '@/components/Catalogue'
 import Quizz from '@/components/Quizz'
 import Administratouille from '@/components/Administratouille'
+import AddTool from '@/components/AddTool';
+import ToolDetail from '@/components/ToolDetail';
 
 Vue.use(Router)
 
@@ -33,6 +35,16 @@ export default new Router({
       path: '/administratouille',
       name: 'Administratouille',
       component: Administratouille
+    },
+    {
+      path: '/administratouille/add',
+      name: 'AddTool',
+      component: AddTool
+    },
+    {
+      path: '/administratouille/detail/:id',
+      name: 'ToolDetail',
+      component: ToolDetail
     }
   ]
 })
