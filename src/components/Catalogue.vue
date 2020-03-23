@@ -223,7 +223,7 @@ export default {
   },
   computed: {},
   mounted () {
-    if (this.id > this.tools.length || /[^0-9]/.test(this.id)) {
+    if ( /[^0-9]/.test(this.id)) {
       this.id = 1
       this.$router.push({
         name: 'Catalogue',
