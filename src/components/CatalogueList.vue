@@ -44,7 +44,7 @@
             <div class="enbas">
               <h2>{{tool.toolname}}</h2>
               <b-card-text>{{tool.description}}</b-card-text>
-              <b-button class="lienbouton" :href="'/catalogue/'+tool.id">En savoir plus</b-button>
+              <b-button class="lienbouton" @click="ouvrirOutil(tool.id)">En savoir plus</b-button>
             </div>
           </b-card>
         </b-col>
@@ -54,16 +54,16 @@
 </template>
 
 <script>
-import Quizz from './Quizz'
-import firebase from '../Firebase.js'
+import Quizz from "./Quizz";
+import firebase from "../Firebase.js";
 
 export default {
   components: {
     Quizz
   },
-  data () {
+  data() {
     return {
-      ref: firebase.firestore().collection('tools'),
+      ref: firebase.firestore().collection("tools"),
       id: 1,
       tools: [],
       tmpTools: [],
@@ -72,44 +72,44 @@ export default {
       selected3: null,
       selected4: null,
       selected5: null,
-      text: '',
+      text: "",
       options: [
-        { value: null, text: 'Tous' },
-        { value: 'Client web', text: 'Client Web' },
-        { value: 'Client lourd', text: 'Client lourd' }
+        { value: null, text: "Tous" },
+        { value: "Client web", text: "Client Web" },
+        { value: "Client lourd", text: "Client lourd" }
       ],
       options2: [
-        { value: null, text: 'Tous' },
-        { value: 'Application Web', text: 'Application Web' },
-        { value: 'Application Mobile', text: 'Application Mobile' },
-        { value: 'Client Lourd', text: 'Client Lourd' },
-        { value: 'API/Webservices', text: 'API/Webservices' },
-        { value: 'Base de donnée', text: 'Base de donnée' }
+        { value: null, text: "Tous" },
+        { value: "Application Web", text: "Application Web" },
+        { value: "Application Mobile", text: "Application Mobile" },
+        { value: "Client Lourd", text: "Client Lourd" },
+        { value: "API/Webservices", text: "API/Webservices" },
+        { value: "Base de donnée", text: "Base de donnée" }
       ],
       options3: [
-        { value: null, text: 'Tous' },
-        { value: 'Jenkins', text: 'Jenkins' },
-        { value: 'Gitlab', text: 'Gitlab' },
-        { value: 'Github', text: 'Github' },
-        { value: 'Jira', text: 'Jira' },
-        { value: 'Xray', text: 'Xray' }
+        { value: null, text: "Tous" },
+        { value: "Jenkins", text: "Jenkins" },
+        { value: "Gitlab", text: "Gitlab" },
+        { value: "Github", text: "Github" },
+        { value: "Jira", text: "Jira" },
+        { value: "Xray", text: "Xray" }
       ],
       options4: [
-        { value: null, text: 'Peu importe' },
-        { value: 'Débutant', text: 'Débutant' },
-        { value: 'Moyen', text: 'Moyen' },
-        { value: 'Expert', text: 'Expert' }
+        { value: null, text: "Peu importe" },
+        { value: "Débutant", text: "Débutant" },
+        { value: "Moyen", text: "Moyen" },
+        { value: "Expert", text: "Expert" }
       ],
       options5: [
-        { value: null, text: 'Peu importe' },
-        { value: 'Gratuit', text: 'Oui' },
-        { value: 'Payant', text: 'Non' }
+        { value: null, text: "Peu importe" },
+        { value: "Gratuit", text: "Oui" },
+        { value: "Payant", text: "Non" }
       ]
-    }
+    };
   },
-  created () {
+  created() {
     this.ref.onSnapshot(querySnapshot => {
-      this.tools = []
+      this.tools = [];
       querySnapshot.forEach(doc => {
         this.tools.push({
           id: doc.data().id,
@@ -119,7 +119,7 @@ export default {
           description: doc.data().description,
           caract: doc.data().caract,
           compatibilite: doc.data().compatibilite
-        })
+        });
         this.tmpTools.push({
           id: doc.data().id,
           toolname: doc.data().toolname,
@@ -128,123 +128,129 @@ export default {
           description: doc.data().description,
           caract: doc.data().caract,
           compatibilite: doc.data().compatibilite
-        })
-      })
-    })
+        });
+      });
+    });
   },
   methods: {
-    returnTools (tools) {
-      this.tools = tools
+    returnTools(tools) {
+      this.tools = tools;
     },
-    resetFiltre () {
-      this.selected = null
-      this.selected2 = null
-      this.selected3 = null
-      this.selected4 = null
-      this.selected5 = null
-      this.tools = this.tmpTools
+    ouvrirOutil(toolid) {
+    this.$router.push({
+        name: 'Catalogue',
+        params: { id: toolid}
+    })
     },
-    filtrerParNom () {
-      this.tools = this.tmpTools
-      var sel = this.text
-      this.tools = this.tools.filter(function (txt) {
-        return txt.toolname === sel
-      })
-      if (sel === '') {
-        this.tools = this.tmpTools
+    resetFiltre() {
+      this.selected = null;
+      this.selected2 = null;
+      this.selected3 = null;
+      this.selected4 = null;
+      this.selected5 = null;
+      this.tools = this.tmpTools;
+    },
+    filtrerParNom() {
+      this.tools = this.tmpTools;
+      var sel = this.text;
+      this.tools = this.tools.filter(function(txt) {
+        return txt.toolname === sel;
+      });
+      if (sel === "") {
+        this.tools = this.tmpTools;
       }
     },
-    multiFiltre () {
-      this.tools = this.tmpTools
+    multiFiltre() {
+      this.tools = this.tmpTools;
       var filtercondition = [
         this.selected,
         this.selected2,
         this.selected3,
         this.selected4,
         this.selected5
-      ]
-      this.tools = this.tools.filter(function (obj) {
+      ];
+      this.tools = this.tools.filter(function(obj) {
         if (filtercondition[0] !== null) {
           if (filtercondition[0] !== obj.caract.Type) {
-            return false
+            return false;
           }
         }
         if (filtercondition[1] != null) {
-          if (filtercondition[1] === 'Application Web') {
-            if (obj.caract.Web_app !== 'Oui') {
-              return false
+          if (filtercondition[1] === "Application Web") {
+            if (obj.caract.Web_app !== "Oui") {
+              return false;
             }
           }
-          if (filtercondition[1] === 'API/Webservices') {
-            if (obj.caract.API_Webservices !== 'Oui') {
-              return false
+          if (filtercondition[1] === "API/Webservices") {
+            if (obj.caract.API_Webservices !== "Oui") {
+              return false;
             }
           }
-          if (filtercondition[1] === 'Client Lourd') {
-            if (obj.caract.Desktop_app !== 'Oui') {
-              return false
+          if (filtercondition[1] === "Client Lourd") {
+            if (obj.caract.Desktop_app !== "Oui") {
+              return false;
             }
           }
-          if (filtercondition[1] === 'Application Mobile') {
-            if (obj.caract.Mobile_app !== 'Oui') {
-              return false
+          if (filtercondition[1] === "Application Mobile") {
+            if (obj.caract.Mobile_app !== "Oui") {
+              return false;
             }
           }
-          if (filtercondition[1] === 'Base de donnée') {
-            if (obj.caract.Base_de_donnée !== 'Oui') {
-              return false
+          if (filtercondition[1] === "Base de donnée") {
+            if (obj.caract.Base_de_donnée !== "Oui") {
+              return false;
             }
           }
         }
         if (filtercondition[2] !== null) {
-          if (filtercondition[2] === 'Jenkins') {
-            if (obj.compatibilite.Jenkins !== 'Oui') {
-              return false
+          if (filtercondition[2] === "Jenkins") {
+            if (obj.compatibilite.Jenkins !== "Oui") {
+              return false;
             }
           }
-          if (filtercondition[2] === 'Gitlab') {
-            if (obj.compatibilite.Gitlab !== 'Oui') {
-              return false
+          if (filtercondition[2] === "Gitlab") {
+            if (obj.compatibilite.Gitlab !== "Oui") {
+              return false;
             }
           }
-          if (filtercondition[2] === 'Cucumber') {
-            if (obj.compatibilite.Cucumber !== 'Oui') {
-              return false
+          if (filtercondition[2] === "Cucumber") {
+            if (obj.compatibilite.Cucumber !== "Oui") {
+              return false;
             }
           }
-          if (filtercondition[2] === 'Jira') {
-            if (obj.compatibilite.Jira !== 'Oui') {
-              return false
+          if (filtercondition[2] === "Jira") {
+            if (obj.compatibilite.Jira !== "Oui") {
+              return false;
             }
           }
-          if (filtercondition[2] === 'Xray') {
-            if (obj.compatibilite.Xray !== 'Oui') {
-              return false
+          if (filtercondition[2] === "Xray") {
+            if (obj.compatibilite.Xray !== "Oui") {
+              return false;
             }
           }
-          if (filtercondition[2] === 'Github') {
-            if (obj.compatibilite.Github !== 'Oui') {
-              return false
+          if (filtercondition[2] === "Github") {
+            if (obj.compatibilite.Github !== "Oui") {
+              return false;
             }
           }
         }
         if (filtercondition[3] !== null) {
           if (filtercondition[3] !== obj.caract.Niveau_de_programmation) {
-            return false
+            return false;
           }
         }
         if (filtercondition[4] !== null) {
           if (filtercondition[4] !== obj.caract.Prix) {
-            return false
+            return false;
           }
         }
-        return true
-      })
+        return true;
+      });
     }
   },
   computed: {},
-  mounted () {}
-}
+  mounted() {}
+};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
