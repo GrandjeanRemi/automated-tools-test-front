@@ -3,8 +3,8 @@
     <b-row class="justify-content-center">
       <b-col>
         <div class="toolName">
-          <h1 id="idtoolname" v-for="tool in tools" v-bind:key="tool.id">
-            <div v-if="id == tool.id">
+          <h1 id="idtoolname" v-for="tool in tools" v-bind:key="tool.key">
+            <div v-if="key == tool.key">
               <img width="100" height="100" v-bind:src="tool.logo" />
               {{tool.toolname}}
             </div>
@@ -29,14 +29,14 @@
           <span class="draw">CARACTERISTIQUES</span>
         </div>
         <div class="toolCaract">
-          <div class="content" v-for="tool in tools" v-bind:key="tool.id">
-            <div v-for="(value, key) in tool.caract" v-bind:key="key">
-              <div v-if="id == tool.id">
-                <b>{{replaceKey(key)}}</b>
+          <div class="content" v-for="tool in tools" v-bind:key="tool.key">
+            <div v-for="(value, keys) in tool.caract" v-bind:key="keys">
+              <div v-if="key == tool.key">
+                <b>{{replaceKey(keys)}}</b>
                 : {{value}}
               </div>
             </div>
-            <div v-if="id == tool.id">
+            <div v-if="key == tool.key">
               <div class="weblink">
                 <a target="#blank" :href="tool.url">VOIR LE SITE</a>
               </div>
@@ -47,10 +47,10 @@
       <b-col xl="4">
         <div class="title">COMPATIBILITE</div>
         <div class="compatibilite">
-          <div class="content" v-for="tool in tools" v-bind:key="tool.id">
-            <div v-for="(value, key) in tool.compatibilite" v-bind:key="key">
-              <div v-if="id == tool.id">
-                <div class="compatibilitetools" v-if="key === 'Gitlab'">
+          <div class="content" v-for="tool in tools" v-bind:key="tool.key">
+            <div v-for="(value, keys) in tool.compatibilite" v-bind:key="keys">
+              <div v-if="key == tool.key">
+                <div class="compatibilitetools" v-if="keys === 'Gitlab'">
                   <img class="compatibilitetoolsimg" src="../assets/img/gitlab-logo.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
                     <img width="50" height="50" src="../assets/img/tick.png" />
@@ -59,7 +59,7 @@
                     <img width="43" height="43" src="../assets/img/quit.png" />
                   </div>
                 </div>
-                <div class="compatibilitetools" v-if="key === 'Jenkins'">
+                <div class="compatibilitetools" v-if="keys === 'Jenkins'">
                   <img class="compatibilitetoolsimg" src="../assets/img/jenkinslogo.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
                     <img width="50" height="50" src="../assets/img/tick.png" />
@@ -68,7 +68,7 @@
                     <img width="43" height="43" src="../assets/img/quit.png" />
                   </div>
                 </div>
-                <div class="compatibilitetools" v-if="key === 'Cucumber'">
+                <div class="compatibilitetools" v-if="keys === 'Cucumber'">
                   <img class="compatibilitetoolsimg" src="../assets/img/cucumber-logo.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
                     <img width="50" height="50" src="../assets/img/tick.png" />
@@ -77,7 +77,7 @@
                     <img width="43" height="43" src="../assets/img/quit.png" />
                   </div>
                 </div>
-                <div class="compatibilitetools" v-if="key === 'Github'">
+                <div class="compatibilitetools" v-if="keys === 'Github'">
                   <img class="compatibilitetoolsimg" src="../assets/img/github.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
                     <img width="50" height="50" src="../assets/img/tick.png" />
@@ -86,7 +86,7 @@
                     <img width="43" height="43" src="../assets/img/quit.png" />
                   </div>
                 </div>
-                <div class="compatibilitetools" v-if="key === 'Jira'">
+                <div class="compatibilitetools" v-if="keys === 'Jira'">
                   <img class="compatibilitetoolsimg" src="../assets/img/jira.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
                     <img width="50" height="50" src="../assets/img/tick.png" />
@@ -95,7 +95,7 @@
                     <img width="43" height="43" src="../assets/img/quit.png" />
                   </div>
                 </div>
-                <div class="compatibilitetools" v-if="key === 'Xray'">
+                <div class="compatibilitetools" v-if="keys === 'Xray'">
                   <img class="compatibilitetoolsimg" src="../assets/img/xraylogo.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
                     <img width="50" height="50" src="../assets/img/tick.png" />
@@ -148,90 +148,90 @@
 </template>
 
 <script>
-import VueChevron from 'vue-chevron'
-import firebase from '../Firebase.js'
+import VueChevron from "vue-chevron";
+import firebase from "../Firebase.js";
 
 export default {
   components: {
     VueChevron
   },
-  data () {
+  data() {
     return {
-      ref: firebase.firestore().collection('tools'),
-      id: this.$route.params.id,
+      ref: firebase.firestore().collection("tools"),
+      key: this.$route.params.id,
       tools: [],
       pointDown: false,
       thickness: 10,
       duration: 300,
       angle: 42,
       roundEdges: true,
-      easing: function n (t) {
-        return t
+      easing: function n(t) {
+        return t;
       }
-    }
+    };
   },
-  created () {
+  created() {
     this.ref.onSnapshot(querySnapshot => {
-      this.tools = []
+      this.tools = [];
       querySnapshot.forEach(doc => {
         this.tools.push({
-          id: doc.data().id,
+          key: doc.id,
           toolname: doc.data().toolname,
           url: doc.data().url,
           logo: doc.data().logo,
           description: doc.data().description,
           caract: doc.data().caract,
           compatibilite: doc.data().compatibilite
-        })
-      })
-    })
+        });
+      });
+    });
   },
   methods: {
-    gotoright () {
-      if (this.id <= this.tools.length - 1) {
-        this.$router.push({
-          name: 'Catalogue',
-          params: { id: parseInt(this.id) + 1 }
-        })
-        this.id = this.$route.params.id
-      } else {
-        this.id = 1
-        this.$router.push({
-          name: 'Catalogue',
-          params: { id: parseInt(this.id) }
-        })
+    gotoright() {
+      for (var i = 0; i < this.tools.length; i++) {
+        if (this.tools[i].key === this.key) {
+          if (i < this.tools.length - 1) {
+            this.$router.push({
+              name: "Catalogue",
+              params: { id: this.tools[i + 1].key }
+            });
+          } else {
+            this.$router.push({
+              name: "Catalogue",
+              params: { id: this.tools[0].key }
+            });
+          }
+        }
       }
+      this.key = this.$route.params.id;
     },
-    gotoleft () {
-      if (this.id > 1) {
-        this.$router.push({
-          name: 'Catalogue',
-          params: { id: parseInt(this.id) - 1 }
-        })
-        this.id = this.$route.params.id
-      } else {
-        this.id = this.tools.length
-        this.$router.push({
-          name: 'Catalogue',
-          params: { id: parseInt(this.id) }
-        })
+    gotoleft() {
+      for (var i = 0; i < this.tools.length; i++) {
+        if (this.tools[i].key === this.key) {
+          console.log(i)
+          if (i > 0) {
+            this.$router.push({
+              name: "Catalogue",
+              params: { id: this.tools[i - 1].key }
+            });
+          } else {
+            console.log(this.tools[this.tools.length-1].key)
+            this.$router.push({
+              name: "Catalogue",
+              params: { id: this.tools[this.tools.length-1].key }
+            });
+          }
+        }
       }
+      this.key = this.$route.params.id;
     },
-    replaceKey (key) {
-      return key.replace(/_/g, ' ')
+    replaceKey(key) {
+      return key.replace(/_/g, " ");
     }
   },
   computed: {},
-  mounted () {
-    if ( /[^0-9]/.test(this.id)) {
-      this.id = 1
-      this.$router.push({
-        name: 'Catalogue',
-        params: { id: parseInt(this.id) }
-      })
-    }
-  }
-}
+  mounted() {}
+};
 </script>
 
 <style scoped>

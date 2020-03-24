@@ -30,7 +30,7 @@
       <b-icon-arrow-repeat class="h1 mb-2 reset" @click="resetFiltre">></b-icon-arrow-repeat>
     </b-row>
     <b-row class="justify-content-center listtools">
-      <div v-for="tool in this.tools" v-bind:key="tool.id">
+      <div v-for="tool in this.tools" v-bind:key="tool.key">
         <b-col>
           <b-card
             title=" "
@@ -44,7 +44,7 @@
             <div class="enbas">
               <h2>{{tool.toolname}}</h2>
               <b-card-text>{{tool.description}}</b-card-text>
-              <b-button class="lienbouton" @click="ouvrirOutil(tool.id)">En savoir plus</b-button>
+              <b-button class="lienbouton" @click="ouvrirOutil(tool.key)">En savoir plus</b-button>
             </div>
           </b-card>
         </b-col>
@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       ref: firebase.firestore().collection("tools"),
+      key: '',
       id: 1,
       tools: [],
       tmpTools: [],
@@ -112,7 +113,7 @@ export default {
       this.tools = [];
       querySnapshot.forEach(doc => {
         this.tools.push({
-          id: doc.data().id,
+          key: doc.id,
           toolname: doc.data().toolname,
           url: doc.data().url,
           logo: doc.data().logo,
@@ -121,7 +122,7 @@ export default {
           compatibilite: doc.data().compatibilite
         });
         this.tmpTools.push({
-          id: doc.data().id,
+          key: doc.id,
           toolname: doc.data().toolname,
           url: doc.data().url,
           logo: doc.data().logo,

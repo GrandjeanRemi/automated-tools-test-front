@@ -12,15 +12,6 @@
             horizontal
             :label-cols="4"
             breakpoint="md"
-            label="Id"
-          >
-            <b-form-input disabled=true id="id"  :value="size"></b-form-input>
-          </b-form-group>
-          <b-form-group
-            id="fieldsetHorizontal"
-            horizontal
-            :label-cols="4"
-            breakpoint="md"
             label="Nom de l'outil"
           >
             <b-form-input id="toolname" v-model.trim="tool.toolname"></b-form-input>
@@ -273,53 +264,45 @@ export default {
       size: 0
     };
   },
-  created() {
-    this.ref.onSnapshot(querySnapshot => {
-      this.size = 2
-      querySnapshot.forEach(doc => {
-        this.size++
-      })
-    })
-  },
   methods: {
     onSubmit(evt) {
       var tmpSize =this.size
-      evt.preventDefault();
+      evt.preventDefault()
 
       this.ref
         .add(this.tool)
         .then(docRef => {
-          this.tool.toolname = "";
+          this.tool.toolname = ""
 
-          this.tool.caract.Type = "";
-          this.tool.caract.Web_app = "";
-          this.tool.caract.API_Webservices = "";
-          this.tool.caract.Desktop_app = "";
-          this.tool.caract.Mobile_app = "";
-          this.tool.caract.Base_de_donnee = "";
-          this.tool.caract.Langage = "";
-          this.tool.caract.Niveau_de_programmation = "";
-          this.tool.caract.Type_de_test = "";
-          this.tool.caract.Technique_de_test = "";
-          this.tool.caract.Import_Export = "";
-          this.tool.caract.Documentation = "";
-          this.tool.caract.Licence = "";
-          this.tool.caract.Support = "";
-          this.tool.caract.Prix = "";
+          this.tool.caract.Type = ""
+          this.tool.caract.Web_app = ""
+          this.tool.caract.API_Webservices = ""
+          this.tool.caract.Desktop_app = ""
+          this.tool.caract.Mobile_app = ""
+          this.tool.caract.Base_de_donnee = ""
+          this.tool.caract.Langage = ""
+          this.tool.caract.Niveau_de_programmation = ""
+          this.tool.caract.Type_de_test = ""
+          this.tool.caract.Technique_de_test = ""
+          this.tool.caract.Import_Export = ""
+          this.tool.caract.Documentation = ""
+          this.tool.caract.Licence = ""
+          this.tool.caract.Support = ""
+          this.tool.caract.Prix = ""
 
-          this.tool.compatibilite.Jenkins = "";
-          this.tool.compatibilite.Gitlab = "";
-          this.tool.compatibilite.Cucumber = "";
-          this.tool.compatibilite.Jira = "";
-          this.tool.compatibilite.Xray = "";
-          this.tool.compatibilite.Github = "";
+          this.tool.compatibilite.Jenkins = ""
+          this.tool.compatibilite.Gitlab = ""
+          this.tool.compatibilite.Cucumber = ""
+          this.tool.compatibilite.Jira = ""
+          this.tool.compatibilite.Xray = ""
+          this.tool.compatibilite.Github = ""
 
-          this.tool.url = "";
-          this.tool.logo = "";
-          this.tool.description = "";
+          this.tool.url = ""
+          this.tool.logo = ""
+          this.tool.description = ""
         })
         .catch(error => {
-          alert("Error adding document: ", error);
+          alert("Error adding document: ", error)
         });
     }
   }

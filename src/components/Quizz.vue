@@ -84,7 +84,7 @@
         </div>
       </b-row>
       <b-row class="justify-content-md-center">
-        <div id="liste" class="listeoutils" v-for="tool in this.tools" v-bind:key="tool.id">
+        <div id="liste" class="listeoutils" v-for="tool in this.tools" v-bind:key="tool.key">
           <b-col>
             <b-card
               title=" "
@@ -98,7 +98,7 @@
               <div class="enbas">
                 <h2>{{tool.toolname}}</h2>
                 <b-card-text>{{tool.description}}</b-card-text>
-                <b-button class="lienbouton" :href="'/catalogue/'+tool.id">En savoir plus</b-button>
+                <b-button class="lienbouton" :href="'/catalogue/'+tool.key">En savoir plus</b-button>
               </div>
             </b-card>
           </b-col>
@@ -115,6 +115,7 @@ export default {
   data () {
     return {
       ref: firebase.firestore().collection('tools'),
+      key: '',
       id: 1,
       tools: [],
       cpt: 0,
@@ -131,7 +132,7 @@ export default {
       this.tools = []
       querySnapshot.forEach(doc => {
         this.tools.push({
-          id: doc.data().id,
+          key: doc.id,
           toolname: doc.data().toolname,
           url: doc.data().url,
           logo: doc.data().logo,
