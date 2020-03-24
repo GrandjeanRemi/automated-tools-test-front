@@ -6,6 +6,7 @@ import Quizz from '@/components/Quizz'
 import Administratouille from '@/components/Administratouille'
 import AddTool from '@/components/AddTool';
 import ToolDetail from '@/components/ToolDetail';
+import ToolEdit from '@/components/ToolEdit';
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
       path: '/administratouille/detail/:id',
       name: 'ToolDetail',
       component: ToolDetail
+    }, 
+    {
+      path: '/administratouille/edit/:id',
+      name: 'ToolEdit',
+      component: ToolEdit
     }
   ]
 })
