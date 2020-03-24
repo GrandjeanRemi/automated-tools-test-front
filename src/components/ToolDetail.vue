@@ -63,7 +63,7 @@ export default {
   methods: {
     editboard (id) {
       this.$router.push({
-        name: 'ToolDetail',
+        name: 'ToolEdit',
         params: { id: id }
       })
     },

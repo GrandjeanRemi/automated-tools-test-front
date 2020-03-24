@@ -19,6 +19,7 @@ import Administratouille from './components/Administratouille';
 import ToolList from './components/ToolList';
 import AddTool from './components/AddTool';
 import ToolDetail from './components/ToolDetail';
+import ToolEdit from './components/ToolEdit';
 
 export default {
   name: 'App',
@@ -29,7 +30,8 @@ export default {
     Administratouille,
     ToolList,
     AddTool,
-    ToolDetail
+    ToolDetail,
+    ToolEdit
   },
   methods: {}
 }
