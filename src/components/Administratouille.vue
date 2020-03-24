@@ -1,5 +1,5 @@
 <template>
-  <b-row>
+  <b-row class="top-menu">
     <b-col cols="12">
       <h2>
         Tool List
@@ -53,5 +53,8 @@ export default {
   .table {
     width: 96%;
     margin: 0 auto;
+  }
+  .top-menu{
+    margin-top: 100px;
   }
 </style>

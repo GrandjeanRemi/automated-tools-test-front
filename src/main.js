@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { BootstrapVue, BNav, BCard, BFormRadioGroup, BFormRadio, BProgress, BIconArrowRepeat } from 'bootstrap-vue'
+import { BootstrapVue, BNav, BCard, BFormRadioGroup, BFormRadio, BProgress, BIconArrowRepeat, BModal } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
@@ -15,6 +15,7 @@ Vue.component('b-form-radio-group', BFormRadioGroup)
 Vue.component('b-form-radio', BFormRadio)
 Vue.component('b-progress', BProgress)
 Vue.component('BIconArrowRepeat', BIconArrowRepeat)
+Vue.component('b-modal', BModal);
 
 /* eslint-disable no-new */
 new Vue({
