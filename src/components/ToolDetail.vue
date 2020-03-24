@@ -1,5 +1,5 @@
 <template>
-  <b-row>
+  <b-row class="top-menu">
     <b-col cols="12">
       <h2>
         Edit tool
@@ -16,23 +16,37 @@
         </template>
         <hr class="my-4">
         <b-btn class="edit-btn" variant="success" @click.stop="editboard(key)">Edit</b-btn>
-        <b-btn variant="danger" @click.stop="deleteboard(key)">Delete</b-btn>
+        <b-button variant="danger" id="show-btn" @click="$bvModal.show('bv-modal-example')">Delete</b-button>
       </b-jumbotron>
+      <div class="top-menu">
+        <b-modal class="top-menu" id="bv-modal-example" hide-footer>
+          <template v-slot:modal-title style="text-align:center">
+            Etes-vous sur de supprimer ?
+          </template>
+          <div class="center-top">
+            <b-btn variant="danger" @click.stop="deleteboard(key)">Supprimer</b-btn>
+            <b-btn @click="$bvModal.hide('bv-modal-example')">Fermer</b-btn>
+          </div>
+        </b-modal>
+    </div>
     </b-col>
   </b-row>
+  
 </template>
 
 <script>
 
 import firebase from '../Firebase'
-import Router from '../router/index'
 
 export default {
   name: 'ToolDetail',
+  components: {
+
+  },
   data () {
     return {
       key: '',
-      tool: {}
+      tool: {},
     }
   },
   created () {
@@ -61,12 +75,16 @@ export default {
       }).catch((error) => {
         alert("Error removing document: ", error);
       });
-    }
+    },
   }
 }
 </script>
 
 <style>
+  .top-menu{
+    margin-top:100px;
+  }
+
   .jumbotron {
     padding: 2rem;
   }
@@ -74,4 +92,12 @@ export default {
     margin-right: 20px;
     width: 70px;
   }
+  .test {
+    background-color: black;
+  }
+
+  .center-top{
+    text-align:center;
+  }
+
 </style>
