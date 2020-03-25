@@ -7,10 +7,33 @@
       </h2>
       <b-jumbotron>
         <template slot="header">
+          <img v-bind:src="tool.logo" />
           {{tool.toolname}}
         </template>
         <template slot="lead">
-          Title: {{tool.toolname}}<br>
+          Caracteristiques : <br />
+           - API Webservices : {{tool.caract.API_Webservices}}<br />
+           - Base de donnees : {{tool.caract.Base_de_donnee}}<br />
+           - Desktop App : {{tool.caract.Desktop_app}}<br />
+           - Documentation : {{tool.caract.Documentation}}<br />
+           - Import/Export : {{tool.caract.Import_Export}}<br />
+           - Langage : {{tool.caract.Langage}}<br />
+           - Licence : {{tool.caract.Licence}}<br />
+           - Mobile App : {{tool.caract.Mobile_app}}<br />
+           - Niveau de Programmation : {{tool.caract.Niveau_de_programmation}}<br />
+           - Prix : {{tool.caract.Prix}}<br />
+           - Support : {{tool.caract.Support}}<br />
+           - Technique de Test : {{tool.caract.Technique_de_test}}<br />
+           - Type : {{tool.caract.Type}} <br />
+           - Web App : {{tool.caract.Web_app}}<br />
+
+          Compatibilite : <br />
+           - Cucumber : {{tool.compatibilite.Cucumber}} <br />
+           - Github : {{tool.compatibilite.Github}} <br />
+           - Gitlab : {{tool.compatibilite.Gitlab}} <br />
+           - Jenkins : {{tool.compatibilite.Jenkins}} <br />
+           - Jira : {{tool.compatibilite.Jira}} <br />
+           - Xray : {{tool.compatibilite.Xray}} <br />
           Description: {{tool.description}}<br>
           URL: {{tool.url}}<br>
         </template>
@@ -55,6 +78,7 @@ export default {
       if (doc.exists) {
         this.key = doc.id;
         this.tool = doc.data();
+        console.log(this.tool);
       } else {
         alert("No such document!");
       }
