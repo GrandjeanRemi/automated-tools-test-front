@@ -278,12 +278,14 @@ img {
 .titrefiltre {
   float: left;
   font-weight: 700;
+  font-size: 13px;
 }
 .reset {
   cursor: pointer;
 }
 .enbas {
   margin: auto;
+  min-width:270px;
 }
 .card-body {
   display: flex;
@@ -291,5 +293,8 @@ img {
 }
 .card-title {
   flex-grow: 1;
+}
+.card-text{
+    font-size: 15px
 }
 </style>
