@@ -24,7 +24,7 @@
             breakpoint="md"
             label="Type"
           >
-            <b-form-input id="Type" v-model.trim="tool.caract.Type"></b-form-input>
+            <b-form-select v-model.trim="tool.caract.Type" :options="types"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -33,7 +33,7 @@
             breakpoint="md"
             label="Web App"
           >
-            <b-form-input id="WebApp" v-model.trim="tool.caract.Web_app"></b-form-input>
+          <b-form-select v-model.trim="tool.caract.Web_app" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -42,7 +42,7 @@
             breakpoint="md"
             label="Api Webservices"
           >
-            <b-form-input id="ApiWebservices" v-model.trim="tool.caract.API_Webservices"></b-form-input>
+            <b-form-select v-model.trim="tool.caract.API_Webservices" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -51,7 +51,7 @@
             breakpoint="md"
             label="Desktop App"
           >
-            <b-form-input id="DesktopApp" v-model.trim="tool.caract.Desktop_app"></b-form-input>
+            <b-form-select v-model.trim="tool.caract.Desktop_app" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -60,7 +60,7 @@
             breakpoint="md"
             label="Mobile App"
           >
-            <b-form-input id="MobileApp" v-model.trim="tool.caract.Mobile_app"></b-form-input>
+            <b-form-select v-model.trim="tool.caract.Mobile_app" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -69,7 +69,7 @@
             breakpoint="md"
             label="Base de donnee"
           >
-            <b-form-input id="BaseDeDonnee" v-model.trim="tool.caract.Base_de_donnee"></b-form-input>
+            <b-form-select v-model.trim="tool.caract.Base_de_donnee" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -87,10 +87,7 @@
             breakpoint="md"
             label="Niveau de programmation"
           >
-            <b-form-input
-              id="NiveauDeProgrammation"
-              v-model.trim="tool.caract.Niveau_de_programmation"
-            ></b-form-input>
+            <b-form-select v-model.trim="tool.caract.Niveau_de_programmation" :options="programLevel"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -99,7 +96,7 @@
             breakpoint="md"
             label="Type de test"
           >
-            <b-form-input id="Type_de_test" v-model.trim="tool.caract.Type_de_test"></b-form-input>
+            <b-form-select v-model.trim="tool.caract.Type_de_test" :options="Type_test"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -117,7 +114,7 @@
             breakpoint="md"
             label="Import Export"
           >
-            <b-form-input id="Import_Export" v-model.trim="tool.caract.Import_Export"></b-form-input>
+            <b-form-select v-model.trim="tool.caract.Import_Export" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -153,7 +150,7 @@
             breakpoint="md"
             label="Prix"
           >
-            <b-form-input id="prix" v-model.trim="tool.caract.Prix"></b-form-input>
+            <b-form-select v-model.trim="tool.caract.Prix" :options="price"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -162,7 +159,7 @@
             breakpoint="md"
             label="Jenkins"
           >
-            <b-form-input id="jenkins" v-model.trim="tool.compatibilite.Jenkins"></b-form-input>
+            <b-form-select v-model.trim="tool.compatibilite.Jenkins" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -171,7 +168,7 @@
             breakpoint="md"
             label="Gitlab"
           >
-            <b-form-input id="gitlab" v-model.trim="tool.compatibilite.Gitlab"></b-form-input>
+            <b-form-select v-model.trim="tool.compatibilite.Gitlab" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -180,7 +177,7 @@
             breakpoint="md"
             label="Cucumber"
           >
-            <b-form-input id="cucumber" v-model.trim="tool.compatibilite.Cucumber"></b-form-input>
+            <b-form-select v-model.trim="tool.compatibilite.Cucumber" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -189,7 +186,7 @@
             breakpoint="md"
             label="Jira"
           >
-            <b-form-input id="jira" v-model.trim="tool.compatibilite.Jira"></b-form-input>
+            <b-form-select v-model.trim="tool.compatibilite.Jira" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -198,17 +195,17 @@
             breakpoint="md"
             label="Xray"
           >
-            <b-form-input id="xray" v-model.trim="tool.compatibilite.Xray"></b-form-input>
+            <b-form-select v-model.trim="tool.compatibilite.Xray" :options="options"></b-form-select>
           </b-form-group>
-          <b-form-group
-            id="fieldsetHorizontal"
-            horizontal
-            :label-cols="4"
-            breakpoint="md"
-            label="Github"
+        <b-form-group
+          id="fieldsetHorizontal"
+          horizontal
+          :label-cols="4"
+          breakpoint="md"
+          label="Github"
           >
-            <b-form-input id="github" v-model.trim="tool.compatibilite.Github"></b-form-input>
-          </b-form-group>
+          <b-form-select v-model.trim="tool.compatibilite.Github" :options="options"></b-form-select>
+        </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
             horizontal
@@ -242,7 +239,7 @@
               :max-rows="6"
             >{{tool.description}}</b-form-textarea>
           </b-form-group>
-          <b-button type="submit" variant="primary">Save</b-button>
+          <b-button type="submit" variant="primary">Ajouter l'outil</b-button>
         </b-form>
       </b-jumbotron>
     </b-col>
@@ -261,6 +258,29 @@ export default {
         caract: {},
         compatibilite: {}
       },
+      options: [
+        { value: "Oui", text: "Oui" },
+        { value: "Non", text: "Non" }
+      ],
+      types: [
+        { value: "Client Web", text: "Client Web" },
+        { value: "Client Lourd", text: "Client Lourd" },
+      ],
+      programLevel: [
+        { value: "Debutant", text: "Debutant" },
+        { value: "Moyen", text: "Moyen" },
+        { value: "Expert", text: "Expert" },
+      ],
+      Type_test: [
+        { value: "Unitaire", text: "Unitaire" },
+        { value: "Integration", text: "Integration" },
+        { value: "Fonctionnel", text: "Fonctionnel" },
+
+      ],
+      price: [
+        { value: "Payant", text: "Payant" },
+        { value: "Gratuit", text: "Gratuit" },
+      ],
       size: 0
     };
   },
