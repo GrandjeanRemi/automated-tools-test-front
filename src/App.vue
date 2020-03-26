@@ -44,6 +44,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin:0;
 }
 body {
   background-color: white;
@@ -62,5 +63,9 @@ body {
 }
 .nav-item > a:hover {
   color : #fd3838 !important;
+}
+.row{
+  margin-right: 0px !important;
+  margin-left: 0px !important;
 }
 </style>

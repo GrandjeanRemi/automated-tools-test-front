@@ -42,7 +42,7 @@
             class="mb-2"
           >
             <div class="enbas">
-              <h2>{{tool.toolname}}</h2>
+              <h2 class="toolname">{{tool.toolname}}</h2>
               <b-card-text>{{tool.description}}</b-card-text>
               <b-button class="lienbouton" @click="ouvrirOutil(tool.key)">En savoir plus</b-button>
             </div>
@@ -295,6 +295,14 @@ img {
   flex-grow: 1;
 }
 .card-text{
-    font-size: 15px
+    font-size: 13px;
+    height:50px;
+}
+.toolname{
+    position:absolute;
+    bottom:47%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%); 
 }
 </style>
