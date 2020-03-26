@@ -3,7 +3,7 @@
     <b-col cols="12">
       <h2>
         Ajouter outil
-        <b-link href="#/">Liste d'outils</b-link>
+        <b-link href="/administratouille">Liste d'outils</b-link>
       </h2>
       <b-jumbotron>
         <b-form @submit="onSubmit">
@@ -13,6 +13,7 @@
             :label-cols="4"
             breakpoint="md"
             label="Nom de l'outil"
+            required
           >
             <b-form-input id="toolname" v-model.trim="tool.toolname"></b-form-input>
           </b-form-group>
@@ -23,11 +24,13 @@
             :label-cols="4"
             breakpoint="md"
             label="Type"
+            required
           >
             <b-form-select v-model.trim="tool.caract.Type" :options="types"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -37,6 +40,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -46,6 +50,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -55,6 +60,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -64,6 +70,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -73,6 +80,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -82,6 +90,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -91,6 +100,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -100,6 +110,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -109,6 +120,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -118,6 +130,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -127,6 +140,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -136,6 +150,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -145,6 +160,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -154,6 +170,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -163,6 +180,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -172,6 +190,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -181,6 +200,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -190,6 +210,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -199,6 +220,7 @@
           </b-form-group>
         <b-form-group
           id="fieldsetHorizontal"
+          required
           horizontal
           :label-cols="4"
           breakpoint="md"
@@ -208,6 +230,7 @@
         </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -217,6 +240,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -226,6 +250,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -233,13 +258,14 @@
           >
             <b-form-textarea
               id="description"
+              required
               v-model="tool.description"
               placeholder="Ecrivez quelque chose"
               :rows="2"
               :max-rows="6"
             >{{tool.description}}</b-form-textarea>
           </b-form-group>
-          <b-button type="submit" variant="primary">Ajouter l'outil</b-button>
+          <b-button type="submit" variant="primary" class="submitboutton">Ajouter l'outil</b-button>
         </b-form>
       </b-jumbotron>
     </b-col>
@@ -328,3 +354,16 @@ export default {
   }
 };
 </script>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+#fieldsetHorizontal{
+  height:40px;
+
+}
+.submitboutton{
+  margin-top:2%;
+}
+.jumbotron{
+  margin-bottom: 0 !important;
+}
+</style>

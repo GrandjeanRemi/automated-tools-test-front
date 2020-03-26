@@ -9,6 +9,7 @@
         <b-form @submit="onSubmit">
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -19,6 +20,7 @@
 
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -28,6 +30,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -37,6 +40,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -46,6 +50,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -55,6 +60,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -64,6 +70,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -73,6 +80,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -82,6 +90,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -91,6 +100,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -100,6 +110,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -109,6 +120,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -118,6 +130,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -127,6 +140,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -136,6 +150,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -145,6 +160,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -154,6 +170,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -163,6 +180,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -172,6 +190,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -181,6 +200,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -190,6 +210,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -199,6 +220,7 @@
           </b-form-group>
         <b-form-group
           id="fieldsetHorizontal"
+          required
           horizontal
           :label-cols="4"
           breakpoint="md"
@@ -208,6 +230,7 @@
         </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -217,6 +240,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -226,6 +250,7 @@
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
+            required
             horizontal
             :label-cols="4"
             breakpoint="md"
@@ -233,6 +258,7 @@
           >
             <b-form-textarea
               id="description"
+              required
               v-model="tool.description"
               placeholder="Ecrivez quelque chose"
               :rows="2"
