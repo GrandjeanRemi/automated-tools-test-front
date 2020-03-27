@@ -53,58 +53,58 @@
                 <div class="compatibilitetools" v-if="keys === 'Gitlab'">
                   <img class="compatibilitetoolsimg" src="../assets/img/gitlab-logo.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
-                    <img width="50" height="50" src="../assets/img/tick.png" />
+                    <img width="40" height="40" src="../assets/img/tick.png" />
                   </div>
                   <div class="compatibilitetoolsvalue" v-if="value === 'Non'">
-                    <img width="43" height="43" src="../assets/img/quit.png" />
+                    <img width="33" height="33" src="../assets/img/quit.png" />
                   </div>
                 </div>
                 <div class="compatibilitetools" v-if="keys === 'Jenkins'">
                   <img class="compatibilitetoolsimg" src="../assets/img/jenkinslogo.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
-                    <img width="50" height="50" src="../assets/img/tick.png" />
+                    <img width="40" height="40" src="../assets/img/tick.png" />
                   </div>
                   <div class="compatibilitetoolsvalue" v-if="value === 'Non'">
-                    <img width="43" height="43" src="../assets/img/quit.png" />
+                    <img width="33" height="33" src="../assets/img/quit.png" />
                   </div>
                 </div>
                 <div class="compatibilitetools" v-if="keys === 'Cucumber'">
                   <img class="compatibilitetoolsimg" src="../assets/img/cucumber-logo.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
-                    <img width="50" height="50" src="../assets/img/tick.png" />
+                    <img width="40" height="40" src="../assets/img/tick.png" />
                   </div>
                   <div class="compatibilitetoolsvalue" v-if="value === 'Non'">
-                    <img width="43" height="43" src="../assets/img/quit.png" />
+                    <img width="33" height="33" src="../assets/img/quit.png" />
                   </div>
                 </div>
                 <div class="compatibilitetools" v-if="keys === 'Github'">
                   <img class="compatibilitetoolsimg" src="../assets/img/github.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
-                    <img width="50" height="50" src="../assets/img/tick.png" />
+                    <img width="40" height="40" src="../assets/img/tick.png" />
                   </div>
                   <div class="compatibilitetoolsvalue" v-if="value === 'Non'">
-                    <img width="43" height="43" src="../assets/img/quit.png" />
+                    <img width="33" height="33" src="../assets/img/quit.png" />
                   </div>
                 </div>
                 <div class="compatibilitetools" v-if="keys === 'Jira'">
                   <img class="compatibilitetoolsimg" src="../assets/img/jira.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
-                    <img width="50" height="50" src="../assets/img/tick.png" />
+                    <img width="40" height="40" src="../assets/img/tick.png" />
                   </div>
                   <div class="compatibilitetoolsvalue" v-if="value === 'Non'">
-                    <img width="43" height="43" src="../assets/img/quit.png" />
+                    <img width="33" height="33" src="../assets/img/quit.png" />
                   </div>
                 </div>
                 <div class="compatibilitetools" v-if="keys === 'Xray'">
                   <img class="compatibilitetoolsimg" src="../assets/img/xraylogo.png" />
                   <div class="compatibilitetoolsvalue" v-if="value === 'Oui'">
-                    <img width="50" height="50" src="../assets/img/tick.png" />
+                    <img width="40" height="40" src="../assets/img/tick.png" />
                   </div>
                   <div class="compatibilitetoolsvalue" v-if="value === 'Non'">
-                    <img width="43" height="43" src="../assets/img/quit.png" />
+                    <img width="33" height="33" src="../assets/img/quit.png" />
                   </div>
                 </div>
-                <hr />
+                <hr>
               </div>
             </div>
           </div>
@@ -250,16 +250,6 @@ li {
 a {
   color: #42b983;
 }
-hr {
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
-}
 
 .toolName {
   margin-bottom: 5%;
@@ -273,7 +263,7 @@ hr {
   border-radius: 25px;
   line-height: 28px;
   text-align: left;
-  height: 650px;
+  height: 550px;
   margin-bottom: 5%;
   padding-bottom: 25px;
   padding-right: 25px;
@@ -285,7 +275,7 @@ hr {
 
 .compatibilite {
   color: #7b7992;
-  height: 650px;
+  height: 550px;
   text-align: center;
   background: #fff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
