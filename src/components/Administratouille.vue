@@ -16,7 +16,6 @@
 
 <script>
 import firebase from '../Firebase';
-import { mapGetters } from "vuex";
 
 export default {
   name: 'Administratouille',
