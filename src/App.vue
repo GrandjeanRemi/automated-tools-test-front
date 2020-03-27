@@ -4,6 +4,7 @@
       <b-nav>
         <b-nav-item href="/">Catalogue</b-nav-item>
         <b-nav-item href="/questionnaire">Choisir mon outil</b-nav-item>
+        <b-nav-item href="/login">Se connecter</b-nav-item>
         <b-nav-item>Contact</b-nav-item>
       </b-nav>
     </div>
@@ -20,6 +21,7 @@ import ToolList from './components/ToolList';
 import AddTool from './components/AddTool';
 import ToolDetail from './components/ToolDetail';
 import ToolEdit from './components/ToolEdit';
+import Login from './components/Login';
 
 export default {
   name: 'App',
@@ -31,7 +33,8 @@ export default {
     ToolList,
     AddTool,
     ToolDetail,
-    ToolEdit
+    ToolEdit,
+    Login
   },
   methods: {}
 }

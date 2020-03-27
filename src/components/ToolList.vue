@@ -2,8 +2,8 @@
   <b-row>
     <b-col cols="12">
       <h2>
-        Board List
-        <b-link href="#/add-board">(Add Board)</b-link>
+        Tool List
+        <router-link :to="{ name: 'AddTool' }">(Add Tool)</router-link>
       </h2>
       <b-table striped hover :items="boards" :fields="fields">
         <template slot="actions" scope="row">

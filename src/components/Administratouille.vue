@@ -3,7 +3,7 @@
     <b-col cols="12">
       <h2>
         Tool List
-        <b-link href="/administratouille/add">(Add Tool)</b-link>
+        <router-link :to="{ name: 'AddTool' }">(Add Tool)</router-link>
       </h2>
       <b-table striped hover :items="tools" :fields="fields">
          <template v-slot:cell(actions)="data">
@@ -16,6 +16,7 @@
 
 <script>
 import firebase from '../Firebase';
+import { mapGetters } from "vuex";
 
 export default {
   name: 'Administratouille',
