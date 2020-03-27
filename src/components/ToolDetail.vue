@@ -3,17 +3,16 @@
     <b-col cols="12">
       <h2>
         Edit tool
-        <b-link href="/administratouille">(Tool List)</b-link>
+        <router-link :to="{ name: 'Administratouille' }">(Tool List)</router-link>
       </h2>
       <b-jumbotron>
         <template slot="header">
-          <img v-bind:src="tool.logo" />
           {{tool.toolname}}
         </template>
         <template slot="lead">
-          Caracteristiques : <br />
+          <h2>Caracteristiques :</h2> <br />
            - API Webservices : {{tool.caract.API_Webservices}}<br />
-           - Base de donnees : {{tool.caract.Base_de_donnee}}<br />
+           - Base de donnees : {{tool.caract.Base_de_donnée}}<br />
            - Desktop App : {{tool.caract.Desktop_app}}<br />
            - Documentation : {{tool.caract.Documentation}}<br />
            - Import/Export : {{tool.caract.Import_Export}}<br />
@@ -27,7 +26,7 @@
            - Type : {{tool.caract.Type}} <br />
            - Web App : {{tool.caract.Web_app}}<br />
 
-          Compatibilite : <br />
+          <h2>Compatibilite :</h2> <br />
            - Cucumber : {{tool.compatibilite.Cucumber}} <br />
            - Github : {{tool.compatibilite.Github}} <br />
            - Gitlab : {{tool.compatibilite.Gitlab}} <br />

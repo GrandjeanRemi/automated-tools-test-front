@@ -3,7 +3,11 @@
     <b-col cols="12">
       <h2>
         Ajouter outil
+<<<<<<< Updated upstream
         <b-link href="/administratouille">Liste d'outils</b-link>
+=======
+        <router-link :to="{ name: 'Administratouille' }">(Liste d'outils)</router-link>
+>>>>>>> Stashed changes
       </h2>
       <b-jumbotron>
         <b-form @submit="onSubmit">
