@@ -80,9 +80,12 @@ router.beforeEach(async(to, from, next) => {
   console.log("CURRENT USER",currentUser)
   const requiresAuth = to.matched.some(record => record.meta.auth);
 
-  if(requiresAuth && !currentUser) next('login');
-  else if (!requiresAuth && currentUser) next('Catalogue');
-  else next();
+  if(requiresAuth && !currentUser ){
+    next('login');
+  } 
+  else {
+    next();
+  } 
 });
 
 export default router;

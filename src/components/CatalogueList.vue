@@ -44,7 +44,7 @@
             <div class="enbas">
               <h2 class="toolname">{{tool.toolname}}</h2>
               <b-card-text>{{tool.description}}</b-card-text>
-              <b-button class="lienbouton" @click="ouvrirOutil(tool.key)">En savoir plus</b-button>
+              <router-link :to="{ name: 'Catalogue', params: { id: tool.key }}"><b-button class="lienbouton">En savoir plus</b-button></router-link>
             </div>
           </b-card>
         </b-col>
@@ -136,12 +136,6 @@ export default {
   methods: {
     returnTools(tools) {
       this.tools = tools;
-    },
-    ouvrirOutil(toolid) {
-    this.$router.push({
-        name: 'Catalogue',
-        params: { id: toolid}
-    })
     },
     resetFiltre() {
       this.selected = null;
@@ -269,6 +263,10 @@ img {
   cursor: pointer;
   border: none;
   margin: auto;
+}
+.lienbouton > a {
+    color: white !important;
+    text-decoration:none;
 }
 .filter {
   margin-right: 10px;
