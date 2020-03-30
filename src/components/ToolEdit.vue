@@ -76,7 +76,7 @@
             breakpoint="md"
             label="Base de donnee"
           >
-            <b-form-select v-model.trim="tool.caract.Base_de_donnee" :options="options"></b-form-select>
+            <b-form-select v-model.trim="tool.caract.Base_de_donnée" :options="options"></b-form-select>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -156,7 +156,7 @@
             breakpoint="md"
             label="Support"
           >
-            <b-form-input id="support" v-model.trim="tool.caract.support"></b-form-input>
+            <b-form-input id="support" v-model.trim="tool.caract.Support"></b-form-input>
           </b-form-group>
           <b-form-group
             id="fieldsetHorizontal"
@@ -286,11 +286,11 @@ export default {
         { value: "Non", text: "Non" }
       ],
       types: [
-        { value: "Client Web", text: "Client Web" },
-        { value: "Client Lourd", text: "Client Lourd" },
+        { value: "Client web", text: "Client Web" },
+        { value: "Client lourd", text: "Client Lourd" },
       ],
       programLevel: [
-        { value: "Debutant", text: "Debutant" },
+        { value: "Débutant", text: "Debutant" },
         { value: "Moyen", text: "Moyen" },
         { value: "Expert", text: "Expert" },
       ],
